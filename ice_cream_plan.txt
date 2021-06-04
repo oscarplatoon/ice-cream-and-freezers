@@ -1,0 +1,12 @@
+What are essential classes?
+    IceCream
+    Freezer
+What attributes will each class have?
+    IceCream: type
+    Freezer: ice_creams, 
+What interface will each class provide?
+    Freezer will provide an interface to move ice cream in and out of freezer
+How will the classes interact with each other?
+    Freezer will contain IceCream instances
+Which classes will inherit from others, if any?
+    No inheritance needed.
