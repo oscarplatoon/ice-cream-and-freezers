@@ -3,13 +3,17 @@ from freezer import Freezer
 
 freezer = Freezer()
 chocolate_icecream = IceCream('chocolate')
+pb_ice = IceCream('Peanut_Butter', 'm')
+delish_ice = IceCream('Delish', 'h')
 
 freezer.insert_ice_cream(chocolate_icecream)
-
-# print(chocolate_icecream.flavor)
-# print(chocolate_icecream)
-# print(len(freezer.storage))
-
+freezer.insert_ice_cream(pb_ice)
+freezer.insert_ice_cream(delish_ice)
 print(freezer)
-print(freezer.get_ice_cream(chocolate_icecream.flavor))
+for ice in freezer.storage:
+    ice.set_time_in_freeze(6)
+    ice.update_status()
+    if ice.status == 'ready':
+        freezer.get_ice_cream()
 print(freezer)
+

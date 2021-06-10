@@ -10,11 +10,12 @@ class Freezer:
         # all_ice_cream = IceCream.objects()
 
     def __str__(self) -> str:
-        temp = 'FREEZER CONTENTS: '
+        temp = 'FREEZER CONTENTS: \n-----------\n'
 
         for s in self.storage:
             temp += str(s) + "\n"
         return temp
+        
 
 
     def insert_ice_cream(self, new_ice_cream):
