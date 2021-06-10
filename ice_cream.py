@@ -71,9 +71,11 @@ class IceCream:
         elif flavor == "Vanilla":
             status_dict = self.vanilla_dict
         elif flavor == "Peanut Butter":
-            status_dict == self.peanut_butter_dict
+            status_dict = self.peanut_butter_dict
+            # print(self.peanut_butter_dict)
         elif flavor == "Strawberry":
-            status_dict == self.strawberry_dict
+            status_dict = self.strawberry_dict
         # Thought of the day: If the above works, it's not that wrong.
-        status += status_dict[freezer_cycles]
+        
+        status = status_dict[freezer_cycles]
         return status

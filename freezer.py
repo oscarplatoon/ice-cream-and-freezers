@@ -1,12 +1,13 @@
 from ice_cream import IceCream
 
 class Freezer: #inherited freezer classes for different icecream types?
+
     def __init__(self, size = 20):
         self.storage = []
         self.size = size
+
     def __str__(self):
         temp = 'FREEZER CONTENTS: '
-
         for s in self.storage:
             temp += str(s) + "\n"
         return temp
@@ -17,7 +18,6 @@ class Freezer: #inherited freezer classes for different icecream types?
             freezer_cycles = ice_cream.get_freezer_cycles()
             freezer_cycles += 1
             ice_cream.set_freezer_cycles(freezer_cycles)
-
         return self.storage
 
     # Adds Ice Cream
@@ -35,8 +35,9 @@ class Freezer: #inherited freezer classes for different icecream types?
         return self.storage.pop()
     
     def remove_ice_cream_by_status(self, flavor, status):
+        desired_ice_cream_status = status
         for index, ice_cream in enumerate(self.storage):
-            if ice_cream.get_flavor() == flavor and ice_cream.return_status():
+            if ice_cream.get_flavor() == flavor and desired_ice_cream_status == ice_cream.return_status():
                 return self.storage.pop(index)
             raise Exception("You haven't found the ice cream you're looking for.")
         
