@@ -19,11 +19,6 @@ class IceCream:
     0: "watery"
     }
 
-        
-    # flavor is a string i.e. -> 'chocolate'
-    # time_in_freezer is int -> 0 -> infinity
-    # status is int -> corresponds to 
-
     def __init__(self, flavor, difficulty = 'e',status = 'watery',time_in_freezer = 0):
         self.flavor = flavor
         self.status = status

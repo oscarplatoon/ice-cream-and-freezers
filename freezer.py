@@ -7,7 +7,6 @@ class Freezer:
     def __init__(self, size = max_storage):
        self.storage = []
        self.size = size
-        # all_ice_cream = IceCream.objects()
 
     def __str__(self) -> str:
         temp = 'FREEZER CONTENTS: \n-----------\n'
@@ -16,8 +15,6 @@ class Freezer:
             temp += str(s) + "\n"
         return temp
         
-
-
     def insert_ice_cream(self, new_ice_cream):
         self.storage.append(new_ice_cream)
 
@@ -26,3 +23,7 @@ class Freezer:
             if ice_cream.flavor == flavor:
                 self.storage.remove(ice_cream)
                 return ice_cream
+
+    def remove_ice(self, ice_cream):
+        self.storage.remove(ice_cream)
+        return ice_cream.flavor

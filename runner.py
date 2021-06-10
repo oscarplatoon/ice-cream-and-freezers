@@ -10,10 +10,12 @@ freezer.insert_ice_cream(chocolate_icecream)
 freezer.insert_ice_cream(pb_ice)
 freezer.insert_ice_cream(delish_ice)
 print(freezer)
+
 for ice in freezer.storage:
     ice.set_time_in_freeze(6)
     ice.update_status()
     if ice.status == 'ready':
-        freezer.get_ice_cream()
-print(freezer)
+        print("I'm going to eat", freezer.remove_ice(ice), "ice cream")
+
+# print(freezer)
 
