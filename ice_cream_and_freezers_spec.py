@@ -1,6 +1,6 @@
 import unittest
-from modules.ice_cream import IceCream
-from modules.freezer import Freezer
+from ice_cream import IceCream
+from freezer import Freezer
 
 class TestIceCream(unittest.TestCase):
     def setUp(self):
