@@ -1,3 +1,4 @@
+from ice_cream import IceCream
 
 class Freezer:
     def __init__(self):
@@ -8,11 +9,24 @@ class Freezer:
 
     def store_ice_cream(self, flavor):
         #IceCream objects come from the freezer? Different class of ice-cream-producer?
+        if len(self.storage) > 20:
+            raise Exception("The freezer is full!")
         ice_cream = IceCream(flavor) 
         self.storage.append(ice_cream)
         return self.storage
 
-    def remove_ice_cream
+    def remove_first_ice_cream(self):
+        if len(self.storage) == 0:
+            raise Exception("Freezer is Empty.")
+        # Remove the first ice cream you see
+        return self.storage.pop()
+    
+    def remove_done_ice_cream(self, flavor, doneness):
+        for index, ice_cream in enumerate(self.storage):
+            if ice_cream.get_flavor() == flavor and ice_cream.get_done_status():
+                return self.storage.pop(index)
+            raise Exception("You haven't found the ice cream you're looking for.")
+        
     # - As a ice cream maker, I want to place batches of ice cream in an freezer.
     #- As a ice cream maker, I want to know when a batch of ice cream is ready to be removed from the freezer.
     # Stores Ice Cream Objects
