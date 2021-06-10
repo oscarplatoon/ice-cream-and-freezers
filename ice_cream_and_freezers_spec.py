@@ -32,7 +32,7 @@ class TestFreezer(unittest.TestCase):
         self.assertTrue(len(self.test_freezer.storage), 1)
 
     def test_remove_by_doneness(self):
-        
+        pass
         # We should test that it's returning what we're asking
         # We should test that it has actually removed an item from freezer storage
         # WIP Refactor this test to use the freezer doneness_check:
