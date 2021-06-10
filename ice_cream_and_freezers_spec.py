@@ -4,12 +4,18 @@ from freezer import Freezer
 
 class TestIceCream(unittest.TestCase):
     def setUp(self):
-    # Go ahead and write some tests here for your code. We know that you'll at least need the IceCream and Freezer class.
-    pass
+        self.test_icecream = IceCream("Vanilla")
+
+    def test_flavor(self):
+        self.assertTrue(self.test_icecream.get_flavor, "Vanilla")
+
+    def test_set_done_status(self):
+        self.test_icecream.set_done_status("Butter")
+        self.assertTrue(self.test_icecream.get_done_status, "Butter")
 
 class TestFreezer(unittest.TestCase):
     def setUp(self):
-
+        pass
     pass
 
 if __name__ == '__main__':
