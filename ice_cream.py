@@ -3,7 +3,7 @@ class IceCream:
         0: 'watery',
         1: 'almost_ready',
         2: 'ready',
-        3: 'over churned',
+        3: 'over_churned',
         4: 'butter'
     }
 
@@ -14,7 +14,7 @@ class IceCream:
         3: 'almost_ready',
         4: 'almost_ready',
         5: 'ready',
-        6: 'over churned',
+        6: 'over_churned',
         7: 'butter'
     }
 
@@ -24,7 +24,7 @@ class IceCream:
         2: 'ready',
         3: 'ready',
         4: 'ready',
-        5: 'over churned',
+        5: 'over_churned',
         6: 'butter'
     }
 
@@ -32,7 +32,7 @@ class IceCream:
         0: 'watery',
         1: 'almost_ready',
         2: 'ready',
-        3: 'over churned',
+        3: 'over_churned',
         4: 'butter'
     }
 
@@ -40,10 +40,12 @@ class IceCream:
     def __init__(self, flavor):
         self.flavor = flavor
         self.freezer_cycles = 0
+        # self.status = ""
         
     def __str__(self):
         return f"Ice Cream Flavor: {self.flavor} is in freeze status: {self.freezer_cycles}"
 
+    # Getters
     def get_flavor(self):
         return self.flavor
     def get_freezer_cycles(self):
@@ -51,12 +53,14 @@ class IceCream:
     def get_doneness(self):
         return self.doneness
 
+    # Setters
     def set_freezer_cycles(self, freezer_counter):
         self.freezer_cycles = freezer_counter
     def set_doneness(self, doneness):
         self.doneness = doneness
 
-    """WIP Build Have a set_dictionary method that determines which key/freezer cycle to use for determining status?"""
+    # Compares freezer cycles to class defined dictionary for a given flavor
+    # Returns a str status of watery, almost ready, ready, over_churned, or butter
     def return_status(self):
         status = ""
         flavor = self.get_flavor()

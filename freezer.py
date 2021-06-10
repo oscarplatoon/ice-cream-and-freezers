@@ -1,16 +1,17 @@
 from ice_cream import IceCream
 
 class Freezer: #inherited freezer classes for different icecream types?
-    def __init__(self):
+    def __init__(self, size = 20):
         self.storage = []
-
-    def __str__(self) -> str:
+        self.size = size
+    def __str__(self):
         temp = 'FREEZER CONTENTS: '
 
         for s in self.storage:
             temp += str(s) + "\n"
         return temp
 
+    # Runs a freeze cycle which increments cycles on every IceCream object by 1
     def freeze_ice_cream(self):
         for ice_cream in self.storage:
             freezer_cycles = ice_cream.get_freezer_cycles()
@@ -19,9 +20,9 @@ class Freezer: #inherited freezer classes for different icecream types?
 
         return self.storage
 
+    # Adds Ice Cream
     def store_ice_cream(self, flavor):
-        #IceCream objects come from the freezer? Different class of ice-cream-producer?
-        if len(self.storage) > 20:
+        if len(self.storage) > self.size:
             raise Exception("The freezer is full!")
         ice_cream = IceCream(flavor) 
         self.storage.append(ice_cream)
