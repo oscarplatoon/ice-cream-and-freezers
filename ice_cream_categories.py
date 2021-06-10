@@ -1,40 +1,55 @@
-# import enum
+"""
+Interesting idea to use Enums and map status of icecream to value to then compare,
+Enum Class doc seems to indicate it's not the right tool for this, but worth exploring
+A foot note to comeback for later follows:
+"""
 
-class IceCreamStatusLookUp:
-  
-    chocolate_dict = {
-        0: 'watery',
-        1: 'almost_ready',
-        2: 'ready',
-        3: 'over churned',
-        4: 'butter'
-    }
+# from enum import Enum
 
-    vanilla_dict = {
-        0: 'watery',
-        1: 'almost_ready',
-        2: 'almost_ready',
-        3: 'almost_ready',
-        4: 'almost_ready',
-        5: 'ready',
-        6: 'over churned',
-        7: 'butter'
-    }
+# class Chocolate(Enum):
+#     WATERY = 0
+#     WATERY = 1
+#     ALMOST_READY = 4-5
+#     READY = 6
+#     OVER_CHURNED = 7
+#     BUTTER = 8
 
-    strawberry_dict = {
-        0: 'watery',
-        1: 'almost_ready',
-        2: 'ready',
-        3: 'ready',
-        4: 'ready',
-        5: 'over churned',
-        6: 'butter'
-    }
+# test = Chocolate(1)
+# print(test)
+#     # {
 
-    peanut_butter_dict = {
-        0: 'watery',
-        1: 'almost_ready',
-        2: 'ready',
-        3: 'over churned',
-        4: 'butter'
-    }
+    #     0: 'watery',
+    #     1: 'almost_ready',
+    #     2: 'ready',
+    #     3: 'over churned',
+    #     4: 'butter'
+    # }
+
+    # vanilla_dict = {
+    #     0: 'watery',
+    #     1: 'almost_ready',
+    #     2: 'almost_ready',
+    #     3: 'almost_ready',
+    #     4: 'almost_ready',
+    #     5: 'ready',
+    #     6: 'over churned',
+    #     7: 'butter'
+    # }
+
+    # strawberry_dict = {
+    #     0: 'watery',
+    #     1: 'almost_ready',
+    #     2: 'ready',
+    #     3: 'ready',
+    #     4: 'ready',
+    #     5: 'over churned',
+    #     6: 'butter'
+    # }
+
+    # peanut_butter_dict = {
+    #     0: 'watery',
+    #     1: 'almost_ready',
+    #     2: 'ready',
+    #     3: 'over churned',
+    #     4: 'butter'
+    # }
