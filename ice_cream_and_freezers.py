@@ -44,6 +44,16 @@
 # Interface
 # activate ice cream maker, take in the order, process the order and put it in the freezer when completed
 
+#----- Release 1 --------------
+# Add more features to your program.
+      
+# - Multiple types of ice cream, each with a different freezing time
+# - Status attribute for ice cream, with at least these possible values: `:watery`, `:almost_ready`, `:ready`, `:freezer_burned`
+
+# ice cream accepts multiple types of ice cream and stores them in an array/list or an obj/dict- with key of "type" and value of freezing time?
+
+# time method
+
 
 class IceCreamMaker:
     def __init__(self, name, freezers):
@@ -52,12 +62,38 @@ class IceCreamMaker:
         for i in range(freezers):
             self.freezers.append(Freezer())
 
+    def process_order(self, type_of_ice_cream):
+        ice_cream_batch = IceCream(type_of_ice_cream)
+
+        for i in range(len(self.freezers)):
+            if self.freezers[i].add_ice_cream(ice_cream_batch):
+                print("Ice cream's in the freezer")
+                return True
+
+        print("No freezers available")
+        return False
+    
+    def __str__(self):
+        return f"{self.name} has {len(self.freezers)} freezers"
+
+    def remove_stored_ice_cream(self, type):
+        for i in range(len(self.freezers)):
+            if type == self.freezers[i].ice_cream_type().type:
+                print(f"Ice cream {type} removed")
+                return True
+
+        print(f"{type} not found in freezer")
+        return False
+        
+#_______________________________
+
 class IceCream:
     def __init__(self, type): 
         self.type = type
 
     def __str__(self):
         return self.type
+#_______________________________
 
 class Freezer:
     def __init__(self):
@@ -75,6 +111,7 @@ class Freezer:
             return False
         else:
             self.ice_cream.append(ice_cream)
+            return True
     
     def remove_ice_cream(self):
         if len(self.ice_cream) > 0:
@@ -82,19 +119,37 @@ class Freezer:
         else:
             return None
 
-my_ice_cream = IceCream("vanilla")
-print(my_ice_cream)
+    def ice_cream_type(self):
+        if len(self.ice_cream) > 0:
+            return self.ice_cream[0]
+        else:
+            return None    
 
-my_freezer = Freezer()
+
+# my_ice_cream = IceCream("vanilla")
+# print(my_ice_cream)
+
+# my_freezer = Freezer()
+# # print(my_freezer)
+
+# my_freezer.add_ice_cream(my_ice_cream)
 # print(my_freezer)
 
-my_freezer.add_ice_cream(my_ice_cream)
-print(my_freezer)
+# my_ice_cream_2 = IceCream("chocolate")
+# print(my_ice_cream_2)
+# my_freezer.add_ice_cream(my_ice_cream_2)
+# print(my_freezer)
 
-my_ice_cream_2 = IceCream("chocolate")
-print(my_ice_cream_2)
-my_freezer.add_ice_cream(my_ice_cream_2)
-print(my_freezer)
+# remove_ice = my_freezer.remove_ice_cream()
+# print(my_freezer, remove_ice)
 
-remove_ice = my_freezer.remove_ice_cream()
-print(my_freezer, remove_ice)
+my_creamery = IceCreamMaker("IceCreamery", 5)
+print(my_creamery)
+
+my_creamery.process_order("Vanilla")
+my_creamery.process_order("VanillaSprinkle")
+my_creamery.process_order("VanillaCake")
+my_creamery.process_order("VanillaChocalate")
+my_creamery.process_order("VanillaStrawberry")
+
+my_creamery.remove_stored_ice_cream("VanillaCake")

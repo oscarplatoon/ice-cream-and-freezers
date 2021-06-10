@@ -28,7 +28,7 @@ At the very least, consider these questions in your answer:
 - What attributes will each class have?
 - What interface will each class provide?--- LAST
 - How will the classes interact with each other?
-- Which classes will inherit from others, if any?
+- Which classes will inherit from others, if any? --None
 
 
 Implement a minimum viable product.
