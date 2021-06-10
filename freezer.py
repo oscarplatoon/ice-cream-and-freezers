@@ -1,11 +1,16 @@
 from ice_cream import IceCream
 
-class Freezer:
+class Freezer: #inherited freezer classes for different icecream types?
     def __init__(self):
         self.storage = []
 
-    def age_ice_cream(self):
-        pass
+    def freeze_ice_cream(self):
+        for ice_cream in self.storage:
+            freezer_cycles = ice_cream.get_freezer_cycles()
+            freezer_cycles += 1
+            ice_cream.set_freezer_cycles(freezer_cycles)
+
+        return self.storage
 
     def store_ice_cream(self, flavor):
         #IceCream objects come from the freezer? Different class of ice-cream-producer?
@@ -21,9 +26,9 @@ class Freezer:
         # Remove the first ice cream you see
         return self.storage.pop()
     
-    def remove_done_ice_cream(self, flavor, doneness):
+    def remove_ice_cream_by_status(self, flavor, status):
         for index, ice_cream in enumerate(self.storage):
-            if ice_cream.get_flavor() == flavor and ice_cream.get_done_status():
+            if ice_cream.get_flavor() == flavor and ice_cream.return_status():
                 return self.storage.pop(index)
             raise Exception("You haven't found the ice cream you're looking for.")
         
