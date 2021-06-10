@@ -1,6 +1,6 @@
 import unittest
-from ice_cream import IceCream
-from freezer import Freezer
+from modules.ice_cream import IceCream
+from modules.freezer import Freezer
 
 class TestIceCream(unittest.TestCase):
     def setUp(self):
@@ -12,6 +12,12 @@ class TestIceCream(unittest.TestCase):
     def test_set_freezer_cycle(self):
         self.test_icecream.set_freezer_cycles(1)
         self.assertTrue(self.test_icecream.get_freezer_cycles, 1)
+
+    def test_return_status_butter(self):
+        self.test_icecream.freezer_cycles = 6
+        self.assertTrue(self.test_icecream.return_status(), "over_churned")
+        self.test_icecream.freezer_cycles = 10
+        self.assertTrue(self.test_icecream.return_status(), "butter")
 
 class TestFreezer(unittest.TestCase):
     def setUp(self):
@@ -73,8 +79,11 @@ class TestAgingIceCream(unittest.TestCase):
         with self.assertRaises(Exception) as context:
             self.test_freezer.remove_ice_cream_by_status("Peanut Butter", "watery")
         self.assertTrue("ice cream you're looking for" in str(context.exception))
+
+    def test_repeat_cycle_icecream_and_remove(self):
         #Age icecream to freezer cycles 4:
-        self.test_freezer.freeze_ice_cream()     
+        self.test_freezer.freeze_ice_cream()
+        self.test_freezer.freeze_ice_cream()
         self.test_freezer.freeze_ice_cream()
         self.test_freezer.freeze_ice_cream()
         #Pull "ready" Strawberry Icecream
