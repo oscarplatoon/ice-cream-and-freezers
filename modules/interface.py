@@ -9,13 +9,13 @@ class Interface():
         mode = input(self.interface_menu())
         while True:
             if mode == '1':
-                return IceCream(self).list_flavors()
+                return IceCream().list_flavors()
 
             elif mode == '2':
-                return IceCream(self).add_flavor()
+                return IceCream().add_to_freezer()
 
             elif mode == '3':
-                pass
+                return Freezer().check_condition()
 
             elif mode == '4':
                 return
