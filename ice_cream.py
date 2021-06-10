@@ -56,22 +56,20 @@ class IceCream:
     def set_doneness(self, doneness):
         self.doneness = doneness
 
-    # Different flavors having different donenesses. Might be worthwhile to have the ice_cream know how done it is?
-    # No doneness at init, assigned a doneness based on their flavor/freezer_cycles
-
     """WIP Build Have a set_dictionary method that determines which key/freezer cycle to use for determining status?"""
-    # def return_status(self):
-    #     status_dict = {}
-    #     if self.get_flavor() == "Chocolate":
-    #         status_dict = chocolate_dict
-    #     elif self.get_flavor() == "Vanilla":
-    #         status_dict = vanilla_dict
-    #     flavor = self.get_flavor()
-    #     freezer_cycles = self.get_freezer_cycles()
-
-
-        #ice_cream.status = ice_cream.return_status()
+    def return_status(self):
+        status = ""
+        flavor = self.get_flavor()
+        status_dict = {}
+        freezer_cycles = self.get_freezer_cycles()
+        if flavor == "Chocolate":
+            status_dict = self.chocolate_dict
+        elif flavor == "Vanilla":
+            status_dict = self.vanilla_dict
+        elif flavor == "Peanut Butter":
+            status_dict == self.peanut_butter_dict
+        elif flavor == "Strawberry":
+            status_dict == self.strawberry_dict
+        # Thought of the day: If the above works, it's not that wrong.
+        status += status_dict[freezer_cycles]
         return status
-        pass
-# test = IceCream("Vanilla")
-# print(test.return_status())

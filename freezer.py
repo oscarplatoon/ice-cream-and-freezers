@@ -4,6 +4,13 @@ class Freezer: #inherited freezer classes for different icecream types?
     def __init__(self):
         self.storage = []
 
+    def __str__(self) -> str:
+        temp = 'FREEZER CONTENTS: '
+
+        for s in self.storage:
+            temp += str(s) + "\n"
+        return temp
+
     def freeze_ice_cream(self):
         for ice_cream in self.storage:
             freezer_cycles = ice_cream.get_freezer_cycles()
