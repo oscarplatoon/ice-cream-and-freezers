@@ -37,10 +37,10 @@ class IceCream:
     }
 
     status = ""
-    def __init__(self, flavor):
+    def __init__(self, flavor, status = ""):
         self.flavor = flavor
         self.freezer_cycles = 0
-        # self.status = ""
+        self.status = status
         
     def __str__(self):
         return f"Ice Cream Flavor: {self.flavor} is in freeze status: {self.freezer_cycles}"
@@ -72,10 +72,11 @@ class IceCream:
             status_dict = self.vanilla_dict
         elif flavor == "Peanut Butter":
             status_dict = self.peanut_butter_dict
-            # print(self.peanut_butter_dict)
         elif flavor == "Strawberry":
             status_dict = self.strawberry_dict
         # Thought of the day: If the above works, it's not that wrong.
-        
-        status = status_dict[freezer_cycles]
+        try:
+            status = status_dict[freezer_cycles]
+        except Exception:
+            status = "butter"
         return status

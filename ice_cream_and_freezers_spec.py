@@ -20,16 +20,32 @@ class TestFreezer(unittest.TestCase):
         self.test_freezer.store_ice_cream("Vanilla")
 
     def test_freezer_exists(self):
-        self.assertTrue(type(self.test_freezer), object)
+        self.assertIsInstance(type(self.test_freezer), object)
 
     def test_freezer_cycle(self):
         self.test_freezer.freeze_ice_cream()
         self.assertTrue(self.test_freezer.storage[0].get_freezer_cycles(), 1)
+        # The above is a violation of the "single ." rule. How do you OOP test suites?
 
     def test_freezer_remove_first(self):
         removed_ice_cream = self.test_freezer.remove_first_ice_cream()
         self.assertTrue(removed_ice_cream.flavor, "Vanilla")
         self.assertTrue(len(self.test_freezer.storage), 1)
+
+    # Test Empty Freezer Exception:
+    def test_empty_freezer(self):
+        self.test_freezer.remove_first_ice_cream()
+        self.test_freezer.remove_first_ice_cream()
+        with self.assertRaises(Exception) as context:
+            self.test_freezer.remove_first_ice_cream()
+        self.assertEqual("Freezer is Empty.", str(context.exception))
+    
+    # Test too full:
+    def test_full_freezer(self):
+        self.test_freezer.size = 2
+        with self.assertRaises(Exception) as context:
+            self.test_freezer.store_ice_cream("Chocolate")
+        self.assertEqual("The freezer is full!", str(context.exception))
 
     def test_remove_by_doneness(self):
         # We should test that it's returning what we're asking
@@ -55,15 +71,15 @@ class TestAgingIceCream(unittest.TestCase):
     def test_freezer_remove_aged_by_status(self):
         self.test_freezer.freeze_ice_cream()
         with self.assertRaises(Exception) as context:
-            removed_ice_cream = self.test_freezer.remove_ice_cream_by_status("Peanut Butter", "watery")
+            self.test_freezer.remove_ice_cream_by_status("Peanut Butter", "watery")
         self.assertTrue("ice cream you're looking for" in str(context.exception))
+        #Age icecream to freezer cycles 4:
+        self.test_freezer.freeze_ice_cream()     
+        self.test_freezer.freeze_ice_cream()
+        self.test_freezer.freeze_ice_cream()
+        #Pull "ready" Strawberry Icecream
+        removed_ice_cream = self.test_freezer.remove_ice_cream_by_status("Strawberry", "ready")
+        self.assertTrue(removed_ice_cream.flavor, "Strawberry")
 
-    # def test_user_post_limit(self):
-    #     self.test_free_user.set_post(self.test_post)  # First Post
-    #     self.test_free_user.set_post(self.test_post)  # Second Post
-    #     with self.assertRaises(Exception) as context:
-    #         self.test_free_user.set_post(self.test_post)  # Error Post
-    #     self.assertTrue(
-    #         "You have exceeded your free posts." in str(context.exception))
 if __name__ == '__main__':
     unittest.main()

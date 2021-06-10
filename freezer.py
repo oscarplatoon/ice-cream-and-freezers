@@ -22,7 +22,7 @@ class Freezer: #inherited freezer classes for different icecream types?
 
     # Adds Ice Cream
     def store_ice_cream(self, flavor):
-        if len(self.storage) > self.size:
+        if len(self.storage) >= self.size:
             raise Exception("The freezer is full!")
         ice_cream = IceCream(flavor) 
         self.storage.append(ice_cream)
@@ -39,7 +39,7 @@ class Freezer: #inherited freezer classes for different icecream types?
         for index, ice_cream in enumerate(self.storage):
             if ice_cream.get_flavor() == flavor and desired_ice_cream_status == ice_cream.return_status():
                 return self.storage.pop(index)
-            raise Exception("You haven't found the ice cream you're looking for.")
+        raise Exception("You haven't found the ice cream you're looking for.")
         
     # - As a ice cream maker, I want to place batches of ice cream in an freezer.
     #- As a ice cream maker, I want to know when a batch of ice cream is ready to be removed from the freezer.
